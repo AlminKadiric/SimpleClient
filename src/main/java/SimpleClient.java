@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 public class SimpleClient {
 
@@ -24,7 +25,9 @@ public class SimpleClient {
         try (Socket clientSocket = new Socket(hostName, portNumber);
              PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
-            String message = "Il si bos il si hadzija...";
+            Scanner scanner = new Scanner(System.in);
+
+            String message = scanner.nextLine();
             out.println(message);
             System.out.println("Ogovor - > " + in.readLine());
 
